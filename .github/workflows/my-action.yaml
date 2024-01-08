@@ -28,6 +28,3 @@ jobs:
 
       - name: Run Test
         run: clojure -Mtest
-
-      - name: Run Test Lein
-        run: lein test
