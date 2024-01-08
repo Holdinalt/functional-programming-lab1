@@ -26,8 +26,6 @@
     )
   )
 
-(task2 9999)
-
 (defn task2-rec [now maxE]
   (if (<= now maxE)
     (if (=
@@ -47,8 +45,6 @@
     )
   )
 
-(task2-rec 0 9999)
-
 (defn task2-rec-tail [now accum maxE]
   (if (<= now maxE)
     (if (=
@@ -67,8 +63,6 @@
     accum
     )
   )
-
-(task2-rec-tail 0 0 9999)
 
 
 
