@@ -81,8 +81,8 @@ jobs:
 
 ```
 
-### Тесты
-#### Task1
+## Тесты
+### Task1
 ```clj
 (ns first-task-test
   (:require [clojure.test :refer [deftest testing is]]
@@ -105,7 +105,7 @@ jobs:
   )
 ```
 
-#### Task2
+### Task2
 ```clj
 (ns second-task-test
   (:require [clojure.test :refer [deftest testing is]]
@@ -128,8 +128,8 @@ jobs:
   )
 ```
 
-### Решения
-#### Task1
+## Решения
+### Task1
 ```clj
 (ns first-task)
 
@@ -176,7 +176,7 @@ jobs:
    )
   )
 ```
-#### Task2
+### Task2
 ```clj
 (ns second-task)
 
