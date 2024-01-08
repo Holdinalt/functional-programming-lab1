@@ -1,3 +1,5 @@
+(ns second-task)
+
 (defn splitDig [n]
   (map (comp read-string str) (str n)))
 

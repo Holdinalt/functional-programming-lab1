@@ -1,3 +1,5 @@
+(ns first-task)
+
 (defn mySeq [x] (or (zero? (mod x 5)) (zero? (mod x 3))))
 
 (defn task1 []
