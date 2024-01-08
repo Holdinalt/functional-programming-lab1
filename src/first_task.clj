@@ -14,8 +14,6 @@
     )
   )
 
-(task1 1000)
-
 (defn task1-rec [now maxD]
   (if (< now maxD)
 
