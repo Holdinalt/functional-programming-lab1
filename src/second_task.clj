@@ -5,19 +5,23 @@
 
 (defn mult5 [x] (* x x x x x))
 
+(defn sumMultedDigOfNumber [x]
+  (reduce (fn
+            [acc, n]
+            (+ acc (mult5 n))
+            )
+          0
+          (splitDig x)
+          )
+  )
+
 (defn task2 [maxE]
   (reduce
     +
     0
     (filter
       (fn [x] (=
-                (reduce (fn
-                          [acc, n]
-                          (+ acc (mult5 n))
-                          )
-                        0
-                        (splitDig x)
-                        )
+                (sumMultedDigOfNumber x)
                 x
                 )
         )
@@ -29,13 +33,7 @@
 (defn task2-rec [now maxE]
   (if (<= now maxE)
     (if (=
-          (reduce (fn
-                    [acc, n]
-                    (+ acc (mult5 n))
-                    )
-                  0
-                  (splitDig now)
-                  )
+          (sumMultedDigOfNumber now)
           now
           )
       (+ now (task2-rec (inc now) maxE))
@@ -48,21 +46,23 @@
 (defn task2-rec-tail [now accum maxE]
   (if (<= now maxE)
     (if (=
-                (reduce (fn
-                          [acc, n]
-                          (+ acc (mult5 n))
-                          )
-                        0
-                        (splitDig now)
-                        )
-                now
-                )
+          (sumMultedDigOfNumber now)
+          now
+          )
          (recur (inc now) (+ now accum) maxE)
          (recur (inc now) accum maxE)
          )
     accum
     )
   )
+
+(defn task2-lazy
+  ([] (task2-lazy 10000))
+  ([x] (reduce (fn [acc n] (if (= (sumMultedDigOfNumber n) n) (+ acc n) acc)) (range x))
+   )
+  )
+
+(task2-lazy)
 
 
 

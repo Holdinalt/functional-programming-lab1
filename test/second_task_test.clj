@@ -13,4 +13,7 @@
   (testing "Modular"
     (is (= answer (second/task2 9999)))
     )
+  (testing "Lazy"
+    (is (= answer (second/task2-lazy 9999)))
+    )
   )

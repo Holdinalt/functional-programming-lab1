@@ -4,7 +4,7 @@
 
 (defn task1 [maxD]
   (reduce
-    (fn [acc, x]
+    (fn [acc x]
       (if (mySeq x)
         (+ acc x)
         acc
@@ -39,4 +39,9 @@
     accum
     ))
 
+(defn task1-lazy
+  ([] (task1-lazy 1000))
+  ([x] (reduce (fn [acc n] (if (mySeq n) (+ acc n) acc)) (range x))
+   )
+  )
 
