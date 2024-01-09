@@ -5,9 +5,9 @@
 (defn task1 [maxD]
   (reduce
     (fn [acc x]
-      (if (mySeq x)
-        (+ acc x)
-        acc
+      (cond
+        (mySeq x) (+ acc x)
+        :else acc
         )
       )
     (range maxD)
@@ -19,9 +19,9 @@
 
     (let [next (task1-rec (+ now 1) maxD)]
 
-      (if (mySeq now)
-        (+ now next)
-        next
+      (cond
+        (mySeq now) (+ now next)
+        :else next
         )
 
       )
@@ -29,13 +29,14 @@
     ))
 
 (defn task1-rec-tail [now maxD accum]
-  (if (< now maxD)
-    (if (mySeq now)
-      (recur (+ now 1) maxD (+ accum now))
-      (recur (+ now 1) maxD accum)
-      )
-    accum
-    ))
+  (cond
+    (< now maxD) (cond
+                   (mySeq now) (recur (+ now 1) maxD (+ accum now))
+                   :else (recur (+ now 1) maxD accum)
+                   )
+    :else accum
+    )
+  )
 
 (defn task1-lazy
   ([] (task1-lazy 1000))

@@ -32,12 +32,9 @@
 
 (defn task2-rec [now maxE]
   (if (<= now maxE)
-    (if (=
-          (sumMultedDigOfNumber now)
-          now
-          )
-      (+ now (task2-rec (inc now) maxE))
-      (recur (inc now) maxE)
+    (cond
+      (= (sumMultedDigOfNumber now) now) (+ now (task2-rec (inc now) maxE))
+      :else (recur (inc now) maxE)
       )
     0
     )
@@ -45,13 +42,10 @@
 
 (defn task2-rec-tail [now accum maxE]
   (if (<= now maxE)
-    (if (=
-          (sumMultedDigOfNumber now)
-          now
-          )
-         (recur (inc now) (+ now accum) maxE)
-         (recur (inc now) accum maxE)
-         )
+    (cond
+      (= (sumMultedDigOfNumber now) now) (recur (inc now) (+ now accum) maxE)
+      :else (recur (inc now) accum maxE)
+      )
     accum
     )
   )
