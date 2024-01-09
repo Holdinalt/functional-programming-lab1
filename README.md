@@ -133,8 +133,10 @@ jobs:
 ```clj
 (ns first-task)
 
+;; Булевая Функция проверяющая число по условиям
 (defn mySeq [x] (or (zero? (mod x 5)) (zero? (mod x 3))))
 
+;; Модульное решение
 (defn task1 [maxD]
   (reduce
     (fn [acc x]
@@ -147,6 +149,7 @@ jobs:
     )
   )
 
+;; Решение рекурсией
 (defn task1-rec [now maxD]
   (if (< now maxD)
 
@@ -161,15 +164,17 @@ jobs:
     0
     ))
 
+;; Решение хвостовой рекурсией
 (defn task1-rec-tail [now maxD accum]
   (if (< now maxD)
     (if (mySeq now)
-      (task1-rec-tail (+ now 1) maxD (+ accum now))
-      (task1-rec-tail (+ now 1) maxD accum)
+      (recur (+ now 1) maxD (+ accum now))
+      (recur (+ now 1) maxD accum)
       )
     accum
     ))
 
+;; Рещение в виде Ленивых списков
 (defn task1-lazy
   ([] (task1-lazy 1000))
   ([x] (reduce (fn [acc n] (if (mySeq n) (+ acc n) acc)) (range x))
@@ -180,11 +185,14 @@ jobs:
 ```clj
 (ns second-task)
 
+;; Функция разделение числа по его числам в список
 (defn splitDig [n]
   (map (comp read-string str) (str n)))
 
+;; Функция возведения в 5ю степень
 (defn mult5 [x] (* x x x x x))
 
+;; Буллевая функция соответствия условию 
 (defn sumMultedDigOfNumber [x]
   (reduce (fn
             [acc, n]
@@ -195,6 +203,7 @@ jobs:
           )
   )
 
+;; Модульное решение
 (defn task2 [maxE]
   (reduce
     +
@@ -210,6 +219,7 @@ jobs:
     )
   )
 
+;; Решение рекурсией
 (defn task2-rec [now maxE]
   (if (<= now maxE)
     (if (=
@@ -223,6 +233,7 @@ jobs:
     )
   )
 
+;; Решение хвостовой рекурсией
 (defn task2-rec-tail [now accum maxE]
   (if (<= now maxE)
     (if (=
@@ -236,6 +247,7 @@ jobs:
     )
   )
 
+;; Рещение в виде Ленивых списков
 (defn task2-lazy
   ([] (task2-lazy 10000))
   ([x] (reduce (fn [acc n] (if (= (sumMultedDigOfNumber n) n) (+ acc n) acc)) (range x))

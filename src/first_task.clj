@@ -31,8 +31,8 @@
 (defn task1-rec-tail [now maxD accum]
   (if (< now maxD)
     (if (mySeq now)
-      (task1-rec-tail (+ now 1) maxD (+ accum now))
-      (task1-rec-tail (+ now 1) maxD accum)
+      (recur (+ now 1) maxD (+ accum now))
+      (recur (+ now 1) maxD accum)
       )
     accum
     ))
