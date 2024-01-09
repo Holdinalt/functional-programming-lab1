@@ -2,3 +2,4 @@
 /.idea/
 /functional-programming-lab1.iml
 /.nrepl-port
+/.clj-kondo/
