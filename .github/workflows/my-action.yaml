@@ -16,7 +16,7 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
 
-      - name: Install clojure
+      - name: Install Clojure
         uses: DeLaGuardo/setup-clojure@12.1
         with:
           cli: 1.10.1.693
@@ -24,10 +24,7 @@ jobs:
           cljfmt: 0.10.2
 
       - name: Run Lint
-        run: clj-kondo --lint src test
-
-      - name: Run Fix
-        run: cljfmt fix src test
+        run: cljfmt check
 
       - name: Run Test
         run: clojure -Mtest
