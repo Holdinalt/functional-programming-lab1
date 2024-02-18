@@ -11,7 +11,7 @@
 
    (range maxD)))
 
-(defn task1-rec [now maxD]
+(defn task1-rec [now maxD]                                  ;next не должен создаваться при 0
   (if (< now maxD)
 
     (let [next (task1-rec (+ now 1) maxD)]
@@ -24,9 +24,8 @@
 
 (defn task1-rec-tail [now maxD accum]
   (cond
-    (< now maxD) (cond
-                   (mySeq now) (recur (+ now 1) maxD (+ accum now))
-                   :else (recur (+ now 1) maxD accum))
+    (and (< now maxD) (mySeq now)) (recur (+ now 1) maxD (+ accum now))
+    (< now maxD) (recur (+ now 1) maxD accum)
     :else accum))
 
 (defn task1-lazy
